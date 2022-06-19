@@ -97,57 +97,72 @@ const ImageDetails = () => {
             )}
           </Grid>
 
-          <Grid md={5} sx={{ mt: 3 }}>
-            {keyFound.map((item) => (
-              <>
-                <div style={{ marginTop: "30px" }}>
-                  <span
-                    style={{
-                      color: "blue",
-                      fontWeight: "bold",
-                      marginRight: "10px",
-                    }}
-                  >
-                    {item.user}
-                  </span>
-
-                  {item.text}
-                </div>
-                <Divider sx={{ mt: 2 }} />
-              </>
-            ))}
-            <span
+          <Grid
+            md={5}
+            style={{
+              marginTop: "30px",
+            }}
+          >
+            <Box
               style={{
-                color: "blue",
-                fontWeight: "bold",
-                marginRight: "10px",
+                height: "100vh",
+                overflowY: "scroll",
+                "::-webkit-scrollbar": {
+                  width: "1px",
+                },
               }}
             >
-              {name}
-            </span>
-            {comment}
+              {keyFound.map((item) => (
+                <>
+                  <div style={{ marginTop: "30px" }}>
+                    <span
+                      style={{
+                        color: "blue",
+                        fontWeight: "bold",
+                        marginRight: "10px",
+                      }}
+                    >
+                      {item.user}
+                    </span>
 
-            {name ? <Divider sx={{ mt: 2 }} /> : <> </>}
+                    {item.text}
+                  </div>
+                  <Divider sx={{ mt: 2 }} />
+                </>
+              ))}
+              <span
+                style={{
+                  color: "blue",
+                  fontWeight: "bold",
+                  marginRight: "10px",
+                }}
+              >
+                {name}
+              </span>
+              {comment}
 
-            <form onSubmit={handleSubmit}>
-              <TextField
-                id="standard-basic"
-                fullWidth
-                required
-                label="Author"
-                variant="standard"
-                onChange={onNameChange}
-              />
-              <TextField
-                id="standard-basic"
-                fullWidth
-                required
-                label="Comment"
-                variant="standard"
-                onChange={onCommentChange}
-              />
-              <Button type="submit"></Button>
-            </form>
+              {name ? <Divider sx={{ mt: 2 }} /> : <> </>}
+
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  id="standard-basic"
+                  fullWidth
+                  required
+                  label="Author"
+                  variant="standard"
+                  onChange={onNameChange}
+                />
+                <TextField
+                  id="standard-basic"
+                  fullWidth
+                  required
+                  label="Comment"
+                  variant="standard"
+                  onChange={onCommentChange}
+                />
+                <Button type="submit"></Button>
+              </form>
+            </Box>
           </Grid>
         </Grid>
       </Box>
